@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mom - Interactive Universe</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body,html{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+    background:black;
+    color:white;
+}
+
+/* =========================
+   ANIMATED GALAXY BACKGROUND
+========================= */
+
+body{
+    background:
+    radial-gradient(circle at top left,#1b2735,#090a0f,#000000);
+}
+
+#nebula-bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-3;
+
+    filter:
+    blur(1px)
+    brightness(1.5)
+    contrast(1.4);
+}
+
+/* Moving stars */
+.stars{
+    position:fixed;
+    width:200%;
+    height:200%;
+    background:url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation:moveStars 120s linear infinite;
+    opacity:0.5;
+    z-index:-2;
+}
+
+@keyframes moveStars{
+    from{
+        transform:translate(0,0);
+    }
+
+    to{
+        transform:translate(-500px,-500px);
+    }
+}
+
+/* Animated glowing circles */
+.glow{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:0.35;
+    animation:floatGlow 15s infinite alternate ease-in-out;
+}
+
+.glow1{
+    width:400px;
+    height:400px;
+    background:#ff7eb3;
+    top:-100px;
+    left:-100px;
+}
+
+.glow2{
+    width:500px;
+    height:500px;
+    background:#6a5acd;
+    bottom:-150px;
+    right:-150px;
+}
+
+.glow3{
+    width:350px;
+    height:350px;
+    background:#00c9ff;
+    top:40%;
+    left:50%;
+}
+
+@keyframes floatGlow{
+    0%{
+        transform:translateY(0px) translateX(0px);
+    }
+
+    100%{
+        transform:translateY(50px) translateX(30px);
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:10;
+    text-align:center;
+    width:90%;
+}
+
+.header h1{
+    font-size:5rem;
+    line-height:1.2;
+
+    background:linear-gradient(
+    135deg,
+    #fff,
+    #fbc2eb,
+    #fad0c4);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:0 0 20px rgba(255,255,255,0.5);
+
+    animation:fadeText 2s ease;
+}
+
+.subtitle{
+    margin-top:20px;
+    font-size:1.2rem;
+    letter-spacing:10px;
+    color:#d1d1f0;
+
+    animation:fadeText 3s ease;
+}
+
+@keyframes fadeText{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   IMAGE SLIDESHOW
+========================= */
+
+.slideshow{
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+
+.slide{
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    border-radius:50%;
+    overflow:hidden;
+
+    border:4px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.7),
+    0 0 30px rgba(255,255,255,0.2);
+
+    animation:
+    floatAnimation 6s ease-in-out infinite,
+    pulseGlow 4s ease-in-out infinite;
+
+    backdrop-filter:blur(10px);
+
+    transition:0.5s;
+}
+
+.slide:hover{
+    transform:scale(1.1);
+
+    box-shadow:
+    0 0 60px rgba(255,192,203,0.9),
+    0 0 100px rgba(255,255,255,0.5);
+}
+
+.slide img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+@keyframes floatAnimation{
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-20px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+@keyframes pulseGlow{
+    0%{
+        box-shadow:
+        0 0 20px rgba(255,255,255,0.2);
+    }
+
+    50%{
+        box-shadow:
+        0 0 50px rgba(255,192,203,0.7);
+    }
+
+    100%{
+        box-shadow:
+        0 0 20px rgba(255,255,255,0.2);
+    }
+}
+
+/* Different animation delay */
+.slide:nth-child(1){animation-delay:0s;}
+.slide:nth-child(2){animation-delay:1s;}
+.slide:nth-child(3){animation-delay:2s;}
+.slide:nth-child(4){animation-delay:3s;}
+.slide:nth-child(5){animation-delay:4s;}
+.slide:nth-child(6){animation-delay:5s;}
+.slide:nth-child(7){animation-delay:6s;}
+.slide:nth-child(8){animation-delay:7s;}
+.slide:nth-child(9){animation-delay:8s;}
+.slide:nth-child(10){animation-delay:9s;}
+.slide:nth-child(11){animation-delay:10s;}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    .header h1{
+        font-size:2.4rem;
+    }
+
+    .subtitle{
+        font-size:0.9rem;
+        letter-spacing:4px;
+    }
+
+    .slide{
+        width:160px;
+        height:160px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="nebula-bg"></canvas>
+
+<div class="stars"></div>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+<div class="glow glow3"></div>
+
+<div class="header">
+    <h1>Everything I am,<br>I owe to you.</h1>
+    <div class="subtitle">TO MY UNIVERSE</div>
+</div>
+
+<!-- Floating Slideshow Images -->
+<div class="slideshow">
+
+<div class="slide" style="top:8%; left:5%;"><img src="photo1.jpeg"></div>
+<div class="slide" style="top:12%; left:35%;"><img src="photo2.jpeg"></div>
+<div class="slide" style="top:8%; left:75%;"><img src="photo3.jpeg"></div>
+<div class="slide" style="top:40%; left:10%;"><img src="photo4.jpeg"></div>
+<div class="slide" style="top:40%; left:45%;"><img src="photo5.jpeg"></div>
+<div class="slide" style="top:35%; left:75%;"><img src="photo6.jpeg"></div>
+<div class="slide" style="top:70%; left:5%;"><img src="photo7.jpeg"></div>
+<div class="slide" style="top:75%; left:30%;"><img src="photo8.jpeg"></div>
+<div class="slide" style="top:72%; left:55%;"><img src="photo9.jpeg"></div>
+<div class="slide" style="top:68%; left:82%;"><img src="photo10.jpeg"></div>
+<div class="slide" style="top:20%; left:55%;"><img src="photo11.jpeg"></div>
+
+</div>
+
+<script>
+
+/* =========================
+   INTERACTIVE PARTICLE GALAXY
+========================= */
+
+const canvas = document.getElementById('nebula-bg');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = [];
+const mouse = {
+    x:window.innerWidth/2,
+    y:window.innerHeight/2
+};
+
+const colors = [
+    '#ff9a9e',
+    '#fad0c4',
+    '#fbc2eb',
+    '#a18cd1',
+    '#84fab0',
+    '#8fd3f4'
+];
+
+class Particle{
+
+    constructor(){
+
+        this.x = Math.random()*canvas.width;
+        this.y = Math.random()*canvas.height;
+
+        this.size = Math.random()*4+1;
+
+        this.speedX = (Math.random()-0.5)*1;
+        this.speedY = (Math.random()-0.5)*1;
+
+        this.color = colors[Math.floor(Math.random()*colors.length)];
+
+        this.opacity = Math.random()*0.8+0.2;
+    }
+
+    update(){
+
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+
+        let distance = Math.sqrt(dx*dx + dy*dy);
+
+        if(distance < 150){
+            this.x -= dx*0.002;
+            this.y -= dy*0.002;
+        }
+
+        if(this.x < 0) this.x = canvas.width;
+        if(this.x > canvas.width) this.x = 0;
+
+        if(this.y < 0) this.y = canvas.height;
+        if(this.y > canvas.height) this.y = 0;
+    }
+
+    draw(){
+
+        ctx.beginPath();
+
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+
+        ctx.fillStyle = this.color;
+
+        ctx.globalAlpha = this.opacity;
+
+        ctx.fill();
+    }
+}
+
+function initParticles(){
+
+    for(let i=0;i<600;i++){
+        particles.push(new Particle());
+    }
+}
+
+function animate(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach((particle)=>{
+
+        particle.update();
+        particle.draw();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener('mousemove',(e)=>{
+
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+});
+
+window.addEventListener('resize',()=>{
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+VanillaTilt.init(document.querySelectorAll('.slide'),{
+    max:20,
+    speed:400,
+    glare:true,
+    'max-glare':0.5
+});
+
+initParticles();
+animate();
+
+</script>
+
+</body>
+</html>
+```
