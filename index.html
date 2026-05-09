@@ -6,17 +6,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For Mom - Universe of Love</title>
+<title>For Mom ❤️</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-<!-- Vanilla Tilt -->
+<!-- VANILLA TILT -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -37,13 +36,16 @@ html{
 body{
 
     font-family:'Poppins',sans-serif;
-    background:#050816;
-    overflow-x:hidden;
+
+    background:#040714;
+
     color:white;
+
+    overflow-x:hidden;
 }
 
 /* =========================
-   CANVAS BACKGROUND
+   BACKGROUND
 ========================= */
 
 canvas{
@@ -59,9 +61,7 @@ canvas{
     z-index:-5;
 }
 
-/* =========================
-   STARS BACKGROUND
-========================= */
+/* STARS */
 
 .stars{
 
@@ -74,14 +74,14 @@ canvas{
     url('https://www.transparenttextures.com/patterns/stardust.png');
 
     animation:
-    moveStars 120s linear infinite;
+    starsMove 150s linear infinite;
 
     opacity:0.4;
 
     z-index:-4;
 }
 
-@keyframes moveStars{
+@keyframes starsMove{
 
     from{
         transform:translate(0,0);
@@ -92,9 +92,7 @@ canvas{
     }
 }
 
-/* =========================
-   GLOW EFFECTS
-========================= */
+/* GLOW EFFECTS */
 
 .glow{
 
@@ -104,7 +102,7 @@ canvas{
 
     filter:blur(120px);
 
-    opacity:0.3;
+    opacity:0.35;
 
     z-index:-3;
 }
@@ -120,7 +118,7 @@ canvas{
     left:-100px;
 
     animation:
-    float1 10s infinite alternate ease-in-out;
+    moveGlow1 10s infinite alternate;
 }
 
 .glow2{
@@ -128,47 +126,44 @@ canvas{
     width:500px;
     height:500px;
 
-    background:#5b5bff;
+    background:#4e7dff;
 
-    bottom:-150px;
-    right:-150px;
+    bottom:-120px;
+    right:-120px;
 
     animation:
-    float2 12s infinite alternate ease-in-out;
+    moveGlow2 12s infinite alternate;
 }
 
 .glow3{
 
-    width:300px;
-    height:300px;
+    width:350px;
+    height:350px;
 
-    background:#00c6ff;
+    background:#00d4ff;
 
     top:40%;
-    left:40%;
+    left:45%;
 
     animation:
-    float3 14s infinite alternate ease-in-out;
+    moveGlow3 14s infinite alternate;
 }
 
-@keyframes float1{
-
+@keyframes moveGlow1{
     to{
-        transform:translate(50px,80px);
+        transform:translate(50px,50px);
     }
 }
 
-@keyframes float2{
-
+@keyframes moveGlow2{
     to{
-        transform:translate(-50px,-60px);
+        transform:translate(-60px,-40px);
     }
 }
 
-@keyframes float3{
-
+@keyframes moveGlow3{
     to{
-        transform:translate(60px,-40px);
+        transform:translate(40px,-50px);
     }
 }
 
@@ -195,83 +190,80 @@ canvas{
 .hero h1{
 
     font-size:
-    clamp(3rem,8vw,7rem);
-
-    line-height:1.1;
+    clamp(2.5rem,8vw,7rem);
 
     font-weight:800;
+
+    line-height:1.2;
 
     background:
     linear-gradient(
     135deg,
     #ffffff,
-    #ffb6d9,
-    #ffd6c0);
+    #ffc0cb,
+    #ffd8c0);
 
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 
     text-shadow:
-    0 0 30px rgba(255,255,255,0.3);
+    0 0 20px rgba(255,255,255,0.3);
 }
 
 .hero p{
 
     margin-top:20px;
 
+    color:#d5d8ff;
+
+    letter-spacing:6px;
+
     font-size:
-    clamp(1rem,2vw,1.4rem);
-
-    letter-spacing:8px;
-
-    color:#cfd3ff;
+    clamp(0.9rem,2vw,1.3rem);
 }
 
 /* =========================
-   MEMORY SECTION
+   GALLERY SECTION
 ========================= */
 
 .memory-section{
 
     width:100%;
 
-    position:relative;
-
-    padding:80px 20px;
+    padding:50px 20px 100px;
 }
 
-/* =========================
-   RESPONSIVE GRID
-========================= */
+/* RESPONSIVE GRID */
 
 .gallery-grid{
-
-    width:100%;
 
     display:grid;
 
     grid-template-columns:
     repeat(auto-fit,minmax(260px,1fr));
 
-    gap:40px;
+    gap:35px;
+
+    width:100%;
+
+    max-width:1500px;
+
+    margin:auto;
 
     justify-items:center;
-
-    align-items:center;
 }
 
-/* =========================
-   MEMORY CARD
-========================= */
+/* CARD */
 
 .memory-card{
 
     width:100%;
-    max-width:320px;
+
+    max-width:300px;
 
     height:420px;
 
-    border-radius:35px;
+    border-radius:30px;
 
     overflow:hidden;
 
@@ -280,30 +272,33 @@ canvas{
     background:
     rgba(255,255,255,0.08);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:blur(10px);
 
     border:
-    1px solid rgba(255,255,255,0.12);
+    1px solid rgba(255,255,255,0.1);
 
     box-shadow:
-    0 20px 60px rgba(0,0,0,0.6),
-    0 0 40px rgba(255,255,255,0.08);
+    0 15px 40px rgba(0,0,0,0.5);
 
     transition:0.5s ease;
 
     animation:
-    floating 6s ease-in-out infinite;
+    floating 5s ease-in-out infinite;
 }
+
+/* HOVER */
 
 .memory-card:hover{
 
     transform:
-    translateY(-20px)
+    translateY(-15px)
     scale(1.03);
 
     box-shadow:
-    0 0 100px rgba(255,192,203,0.6);
+    0 0 60px rgba(255,192,203,0.5);
 }
+
+/* IMAGE */
 
 .memory-card img{
 
@@ -313,9 +308,7 @@ canvas{
     object-fit:cover;
 }
 
-/* =========================
-   OVERLAY
-========================= */
+/* OVERLAY */
 
 .overlay{
 
@@ -327,25 +320,23 @@ canvas{
     linear-gradient(
     to top,
     rgba(0,0,0,0.85),
-    transparent 50%);
+    transparent 55%);
 
     display:flex;
 
     align-items:flex-end;
 
-    padding:25px;
+    padding:20px;
 }
 
 .overlay h2{
 
     font-size:1.5rem;
 
-    font-weight:600;
+    font-weight:700;
 }
 
-/* =========================
-   FLOAT ANIMATION
-========================= */
+/* FLOAT */
 
 @keyframes floating{
 
@@ -354,7 +345,7 @@ canvas{
     }
 
     50%{
-        transform:translateY(-12px);
+        transform:translateY(-10px);
     }
 
     100%{
@@ -368,7 +359,7 @@ canvas{
 
 .footer{
 
-    padding:120px 20px;
+    padding:100px 20px;
 
     text-align:center;
 }
@@ -376,35 +367,27 @@ canvas{
 .footer h2{
 
     font-size:
-    clamp(2rem,5vw,4rem);
+    clamp(1.8rem,5vw,4rem);
 
-    line-height:1.4;
-
-    color:white;
-
-    opacity:0.9;
+    line-height:1.5;
 }
 
 /* =========================
    TABLET
 ========================= */
 
-@media(max-width:768px){
-
-    .memory-card{
-
-        max-width:260px;
-        height:340px;
-    }
+@media(max-width:900px){
 
     .gallery-grid{
 
-        gap:25px;
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
-    .hero p{
+    .memory-card{
 
-        letter-spacing:4px;
+        max-width:100%;
+        height:350px;
     }
 }
 
@@ -412,32 +395,47 @@ canvas{
    MOBILE
 ========================= */
 
-@media(max-width:480px){
+@media(max-width:600px){
 
     .hero{
 
         min-height:80vh;
     }
 
+    .hero h1{
+
+        font-size:2.8rem;
+    }
+
+    .hero p{
+
+        letter-spacing:3px;
+    }
+
+    .gallery-grid{
+
+        grid-template-columns:1fr;
+
+        gap:25px;
+    }
+
     .memory-card{
 
-        max-width:220px;
-        height:300px;
+        width:90%;
+
+        max-width:340px;
+
+        height:420px;
     }
 
     .overlay h2{
 
-        font-size:1.2rem;
+        font-size:1.3rem;
     }
 
     .footer{
 
-        padding:80px 20px;
-    }
-
-    .footer h2{
-
-        line-height:1.5;
+        padding:70px 20px;
     }
 }
 
@@ -466,11 +464,11 @@ canvas{
         I owe to you.
     </h1>
 
-    <p>TO MY UNIVERSE</p>
+    <p>TO MY UNIVERSE ❤️</p>
 
 </section>
 
-<!-- MEMORY GALLERY -->
+<!-- GALLERY -->
 
 <section class="memory-section">
 
@@ -564,7 +562,7 @@ canvas{
     <h2>
         Thank you for every smile,<br>
         every sacrifice,<br>
-        and every moment of love.
+        and every moment of love ❤️
     </h2>
 
 </section>
@@ -598,10 +596,6 @@ const colors = [
     "#84fab0",
     "#8fd3f4"
 ];
-
-/* =========================
-   PARTICLE CLASS
-========================= */
 
 class Particle{
 
@@ -669,22 +663,14 @@ class Particle{
     }
 }
 
-/* =========================
-   CREATE PARTICLES
-========================= */
-
 function initParticles(){
 
-    for(let i=0;i<500;i++){
+    for(let i=0;i<400;i++){
 
         particles.push(
         new Particle());
     }
 }
-
-/* =========================
-   ANIMATION LOOP
-========================= */
 
 function animate(){
 
@@ -703,9 +689,7 @@ function animate(){
     requestAnimationFrame(animate);
 }
 
-/* =========================
-   RESIZE
-========================= */
+/* RESIZE */
 
 window.addEventListener(
 "resize",
@@ -718,9 +702,7 @@ window.addEventListener(
     window.innerHeight;
 });
 
-/* =========================
-   TILT EFFECT
-========================= */
+/* TILT EFFECT */
 
 VanillaTilt.init(
 
@@ -730,55 +712,35 @@ document.querySelectorAll(".memory-card"),
     max:10,
     speed:400,
     glare:true,
-    "max-glare":0.3
+    "max-glare":0.2
 });
 
-/* =========================
-   GSAP ANIMATIONS
-========================= */
+/* GSAP */
 
 gsap.from(".hero h1",{
 
     opacity:0,
-    y:100,
-
-    duration:1.5,
-
-    ease:"power4.out"
+    y:80,
+    duration:1.5
 });
 
 gsap.from(".hero p",{
 
     opacity:0,
-    y:50,
-
+    y:40,
     duration:1.5,
-
-    delay:0.4,
-
-    ease:"power4.out"
+    delay:0.3
 });
 
 gsap.from(".memory-card",{
 
-    scrollTrigger:{
-        trigger:".memory-section",
-        start:"top 80%"
-    },
-
     opacity:0,
     y:100,
-
     duration:1,
-
-    stagger:0.12,
-
-    ease:"power4.out"
+    stagger:0.1
 });
 
-/* =========================
-   START
-========================= */
+/* START */
 
 initParticles();
 animate();
